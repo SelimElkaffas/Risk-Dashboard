@@ -12,15 +12,15 @@ This application provides medical professionals with a dashboard to calculate 10
 * Dual-Storage Architecture: Allows clinical staff to toggle between two secure storage methods:
   * Local Device Storage (Offline-First): Uses IndexedDB/Dexie.js to save patient records directly to the specific computer's browser memory.
   * Centralized Network Storage: Integrates with a self-hosted PocketBase database, allowing multiple exam rooms on the same local network to sync and access patient profiles securely.
-* Clinical UI/UX: Features a Flexbox-driven, multi-panel interface with a dynamic, color-coded risk assessment progress bar for immediate visual feedback.
-* Frictionless Deployment: Packaged via Electron into a zero-dependency Windows executable (.exe), requiring no IT setup or technical knowledge from clinic staff to install.
+* Clinical UI/UX: Features a multi-panel interface with a dynamic, color-coded risk assessment progress bar for immediate visual feedback.
+* Frictionless Deployment: Packaged via Electron into a zero-dependency executable, requiring no IT setup or technical knowledge from clinic staff to install.
 
 ## Tech Stack
 
-* Frontend: React, Vite, standard CSS (Flexbox)
-* Desktop Framework: Electron, electron-builder
-* Local Database: Dexie.js (IndexedDB wrapper)
-* Network Database: PocketBase (Self-hosted SQLite BaaS)
+* Frontend: React, Vite, CSS
+* Desktop Framework: Electron
+* Local Database: Dexie.js (IndexedDB)
+* Network Database: PocketBase (SQLite)
 
 ## Getting Started (For Developers)
 
@@ -28,7 +28,7 @@ To run this project locally on your machine for development or testing:
 
 ### Prerequisites
 * Node.js installed on your machine.
-* (Optional) A local instance of PocketBase running if you wish to test the network storage feature.
+* A local instance of PocketBase running if you wish to test the network storage feature (optional).
 
 ### Installation
 
