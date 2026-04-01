@@ -4,7 +4,7 @@ A standalone, offline-first dashboard designed for clinical environments to aggr
 
 ## Overview
 
-This application provides medical professionals with a dashboard to calculate 10-year CVD (Cardiovascular Disease) risk. Built with a focus on data privacy and HIPAA compliance, the app features a custom dual-storage architecture that allows clinics to keep all patient data strictly on local hardware, bypassing the liabilities of cloud data storage.
+This application provides medical professionals with a dashboard to calculate 10-year CVD (Cardiovascular Disease) risk. Built with a focus on data privacy and regulatory compliance, the app features a custom dual-storage architecture that allows clinics to keep all patient data strictly on local hardware, bypassing the liabilities of cloud data storage.
 
 ## Key Features
 
