@@ -15,10 +15,52 @@
   --container-padding: 40px;
 }
 
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased; 
+    color: var(--text-main);
+    background-color: var(--bg-light);
+}
+
 nav {
-    padding: '20px';
-    background-color: '#334155'; 
-    color: 'white'; 
-    display: 'flex';
-    gap: '20px'
+    padding: 20px;
+    background-color: #334155; 
+    color: white; 
+    display: flex;
+    gap: 20px
+}
+
+a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none; 
+}   
+
+.page-container {
+    min-height: 100vh;
+    background: var(--bg-light);
+    padding: var(--container-padding);
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.card-header {
+    background: var(--primary-purple);
+    color: var(--white);
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px
 }

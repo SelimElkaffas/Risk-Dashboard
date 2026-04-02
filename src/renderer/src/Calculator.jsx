@@ -62,28 +62,15 @@ function Calculator() {
 
     return (
         <>
-        <div style={{ 
-        backgroundColor: '#f8fafc', 
-        minHeight: '100vh',         
-        padding: '40px',            
-        fontFamily: 'system-ui, -apple-system, sans-serif', 
-        color: '#0f172a' ,
-        //zoom: '80%'          
-        }}>
+        <div className='page-container'>
             <h1>Cardiovascular Risk Calculator</h1>
             <div style={{ display: 'flex', gap:'30px', color: 'black'}}>
                 <div style={{flex: 1, display: 'flex', flexDirection: 'column', gap: '20px'}}>
-                    <div style={{backgroundColor: 'white', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', overflow: 'hidden'}}>
-                        <div style={{ 
-                            backgroundColor: '#7e22ce',
-                            color: 'white', 
-                            padding: '15px 20px', 
-                            fontWeight: 'bold',
-                            fontSize: '18px'
-                            }}>
+                    <div className='card'>
+                        <div className='card-header'>
                                 Patient
                         </div>
-                        <div style={{padding: '20px', display: 'flex',  flexDirection: 'column',  gap: '15px'}}>
+                        <div className='card-body'>
                             <div>
                                 <label>Select a patient: </label>
                                 <select value={patient.id === null? "guest" : patient.id} onChange={e => changePatient(e.target.value === "guest" ? null : Number(e.target.value), e.target.options[e.target.selectedIndex].text)}>
@@ -95,17 +82,11 @@ function Calculator() {
                             </div>
                         </div>
                     </div>
-                    <div style={{backgroundColor: 'white', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', overflow: 'hidden'}}>
-                        <div style={{ 
-                            backgroundColor: '#7e22ce',
-                            color: 'white', 
-                            padding: '15px 20px', 
-                            fontWeight: 'bold',
-                            fontSize: '18px'
-                            }}>
+                    <div className='card'>
+                        <div className='card-header'>
                                 Demographic Information
                         </div>
-                        <div style={{padding: '20px', display: 'flex',  flexDirection: 'column',  gap: '15px'}}>
+                        <div className='card-body'>
                             <div>
                                 <label>Sex: </label>
                                 <select value={patientProfile.sex} onChange={e => handleInputChange('sex', e.target.value)}>
@@ -119,17 +100,11 @@ function Calculator() {
                             </div>
                         </div>
                     </div>
-                    <div style={{backgroundColor: 'white', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', overflow: 'hidden'}}>
-                        <div style={{ 
-                            backgroundColor: '#7e22ce',  
-                            color: 'white', 
-                            padding: '15px 20px', 
-                            fontWeight: 'bold',
-                            fontSize: '18px'
-                            }}>
-                                Labs & Vitals
+                    <div className='card'>
+                        <div className='card-header'>
+                            Labs & Vitals
                         </div>
-                        <div style={{padding: '20px', display: 'flex',  flexDirection: 'column',  gap: '15px'}}>
+                        <div className='card-body'>
                             <div>
                                 <label>Total Cholesterol: {patientProfile.tChol} mg/dL</label><br />
                                 <input type="range" min="130" max="320" value={patientProfile.tChol} onChange={e => handleInputChange('tChol', Number(e.target.value))} />
@@ -148,17 +123,11 @@ function Calculator() {
                             </div>
                         </div>
                     </div>
-                    <div style={{backgroundColor: 'white', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', overflow: 'hidden'}}>  
-                        <div style={{ 
-                            backgroundColor: '#7e22ce',  
-                            color: 'white', 
-                            padding: '15px 20px', 
-                            fontWeight: 'bold',
-                            fontSize: '18px'
-                            }}>
-                                Medical History
+                    <div className='card'>  
+                        <div className='card-header'>
+                            Medical History
                         </div>
-                        <div style={{padding: '20px', display: 'flex',  flexDirection: 'column',  gap: '15px'}}>
+                        <div className='card-body'>
                             <div>
                                 <label>Diabetes: </label>
                                 <input type="checkbox" checked={patientProfile.diabetes} onChange={e => handleInputChange('diabetes', e.target.checked)} />
