@@ -147,33 +147,11 @@ function Calculator() {
                         </div>
                     </div>
                     
-                    <button onClick={addSnapshot} style={{
-                    width: '100%',
-                    padding: '15px',
-                    backgroundColor: '#7e22ce',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '8px',
-                    fontSize: '16px',
-                    fontWeight: 'bold',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                    marginTop: '10px'}}>
+                    <button onClick={addSnapshot} className='primary-btn'>
                         Add Snapshot
                     </button>
 
-                    <button onClick={handleBaselineButton} style={{
-                    width: '100%',
-                    padding: '15px',
-                    backgroundColor: '#64748b',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '8px',
-                    fontSize: '16px',
-                    fontWeight: 'bold',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                    marginTop: '10px'}}>
+                    <button onClick={handleBaselineButton} className='secondary-btn'>
                         Reset to Baseline
                     </button>
                     
