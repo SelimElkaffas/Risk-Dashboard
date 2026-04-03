@@ -38,7 +38,7 @@ function Calculator() {
     async function addSnapshot() {
         try { 
             if (!patient.id) {
-                alert("Cannot add snapshot for guest patient. Please create a patient profile first.")
+                alert("Cannot add snapshot for guest patient. Please select a patient profile first.")
             } else {
                 await db.snapshots.add({
                     patientId: patient.id,
