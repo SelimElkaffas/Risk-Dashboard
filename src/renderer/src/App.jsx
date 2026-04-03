@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route, Link } from "react-router-dom"
 import Calculator from "./Calculator"
 import PatientManager from "./PatientManager"
+import PatientProfile from "./PatientProfile"
 import './styles/App.css' 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Calculator />} />
                 <Route path="/patients" element={<PatientManager />} />
+                <Route path="/patients/:id" element={<PatientProfile />}></Route>
             </Routes>
         </HashRouter>
     );
