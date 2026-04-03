@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Link } from "react-router-dom"
+import { HashRouter, Routes, Route, NavLink } from "react-router-dom"
 import Calculator from "./Calculator"
 import PatientManager from "./PatientManager"
 import PatientProfile from "./PatientProfile"
@@ -8,8 +8,8 @@ function App() {
     return (
         <HashRouter>
             <nav>
-                <Link to="/">Calculator</Link>
-                <Link to="/patients">Patient Manager</Link>
+                <NavLink to="/">Calculator</NavLink>
+                <NavLink to="/patients">Patient Manager</NavLink>
             </nav>
             <Routes>
                 <Route path="/" element={<Calculator />} />
