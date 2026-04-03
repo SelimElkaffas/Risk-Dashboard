@@ -32,7 +32,7 @@ function PatientManager() {
 
     return (
         <>
-        <div className='page-container'>
+        <div className='page-container1'>
             <h1>Patient Manager</h1>
             <div className='card'>
                 <div className='card-header'>
@@ -62,8 +62,8 @@ function PatientManager() {
                             {patients.map(p => (
                                 <li key ={p.id}>
                                     <Link to={`/patients/${p.id}`}>{p.name}</Link>
-                                    <span>ID: {p.id}</span>
-                                    <button onClick={() => handleDeletePatient(p.id)}>Delete Patient</button>
+                                    <span className='text-id'>ID: {p.id}</span>
+                                    <button className='btn-delete' onClick={() => handleDeletePatient(p.id)}>Delete Patient</button>
                                 </li>
                             ))}
                         </ul>
