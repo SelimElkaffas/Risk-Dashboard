@@ -18,7 +18,7 @@ function PatientProfile() {
 
     return (
         <>
-        <div className='page-container'>
+        <div className='page-container1'>
             <h1>Patient Profile: {patient.name}</h1>
             {snapshots.map(s => {
                 const dateObject = new Date(s.timestamp)
@@ -32,8 +32,12 @@ function PatientProfile() {
                     <div key={s.id} className='card'>
                         <div className='card-header'>Risk Measurement: {formattedDate}</div>
                         <div className='card-body'>
-                            Risk: {s.risk}
-                            <button onClick={() => handleSnapshotDelete(s.id)}> Delete Snapshot</button>
+                            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                                <div className='snapshot-meta'>
+                                    <span className='risk-value'>Risk: {s.risk}</span>
+                                </div>
+                                <button className='btn-delete' onClick={() => handleSnapshotDelete(s.id)}> Delete Snapshot</button>
+                            </div>
                         </div>
                     </div>
                 )
