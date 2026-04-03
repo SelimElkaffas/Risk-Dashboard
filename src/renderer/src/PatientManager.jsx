@@ -21,6 +21,15 @@ function PatientManager() {
         }
     }
 
+    async function handleDeletePatient(id) {
+        try {
+            if (!window.confirm("Are you sure you want to delete this patient? This action cannot be undone")) return
+            await db.patients.delete(Number(id))
+        } catch (error) {
+            console.error("Error deleting patient", error)
+        }
+    }
+
     return (
         <>
         <div className='page-container'>
@@ -54,6 +63,7 @@ function PatientManager() {
                                 <li key ={p.id}>
                                     <Link to={`/patients/${p.id}`}>{p.name}</Link>
                                     <span>ID: {p.id}</span>
+                                    <button onClick={() => handleDeletePatient(p.id)}>Delete Patient</button>
                                 </li>
                             ))}
                         </ul>
