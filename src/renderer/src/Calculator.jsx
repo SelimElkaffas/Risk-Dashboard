@@ -66,14 +66,14 @@ function Calculator() {
         <>
         <div className='page-container'>
             <h1>Cardiovascular Risk Calculator</h1>
-            <div style={{ display: 'flex', gap:'30px', color: 'black'}}>
+            <div style={{ display: 'flex', gap:'30px'}}>
                 <div style={{flex: 1, display: 'flex', flexDirection: 'column', gap: '20px'}}>
                     <div className='card'>
                         <div className='card-header'>
                                 Patient
                         </div>
                         <div className='card-body'>
-                            <div>
+                            <div className='input-group'>
                                 <label>Select a patient: </label>
                                 <select value={patient.id === null? "guest" : patient.id} onChange={e => changePatient(e.target.value === "guest" ? null : Number(e.target.value), e.target.options[e.target.selectedIndex].text)}>
                                     <option value="guest">Guest (Do not Save)</option>
@@ -89,7 +89,7 @@ function Calculator() {
                                 Demographic Information
                         </div>
                         <div className='card-body'>
-                            <div>
+                            <div className='input-group'>
                                 <label>Sex: </label>
                                 <select value={patientProfile.sex} onChange={e => handleInputChange('sex', e.target.value)}>
                                     <option value="male">Male</option>
@@ -107,7 +107,7 @@ function Calculator() {
                             Labs & Vitals
                         </div>
                         <div className='card-body'>
-                            <div>
+                            <div >
                                 <label>Total Cholesterol: {patientProfile.tChol} mg/dL</label><br />
                                 <input type="range" min="130" max="320" value={patientProfile.tChol} onChange={e => handleInputChange('tChol', Number(e.target.value))} />
                             </div>
@@ -149,11 +149,11 @@ function Calculator() {
                         </div>
                     </div>
                     
-                    <button onClick={addSnapshot} className='primary-btn'>
+                    <button onClick={addSnapshot} className='btn btn-primary btn-auto'>
                         Add Snapshot
                     </button>
 
-                    <button onClick={revertToBaseline} className='secondary-btn'>
+                    <button onClick={revertToBaseline} className='btn btn-secondary btn-auto'>
                         Reset to Baseline
                     </button>
                     

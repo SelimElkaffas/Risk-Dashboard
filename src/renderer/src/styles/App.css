@@ -1,18 +1,23 @@
 :root {
-  /* Colors */
   --primary-purple: #7e22ce;
   --primary-hover: #6b21a8;
   --bg-light: #f8fafc;
-  --text-main: #0f172a;
+  --text-main: #000000;
   --text-muted: #64748b;
   --white: #ffffff;
-  --border-color: rgba(0, 0, 0, 0.1);
+  --border-light: #e2e8f0;
+  --border-focus: rgba(126, 34, 206, 0.15);
+  
+  --danger-main: #ef4444;
+  --danger-hover: #dc2626;
+  --danger-bg: #fef2f2;
+  
+  --secondary-main: #64748b;
+  --secondary-hover: #475569;
 
-  /* Spacing & Borders */
-  --radius: 10px;
-  --shadow: 0 4px 6px var(--border-color);
-  --gap: 20px;
-  --container-padding: 20px;
+  --radius: 8px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 body {
@@ -24,189 +29,211 @@ body {
 }
 
 nav {
-    padding: 20px;
-    background-color: #334155; 
-    color: white; 
+    padding: 0 24px;
+    height: 60px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-light);
     display: flex;
-    gap: 20px
+    align-items: center;
+    gap: 24px;
+    box-shadow: var(--shadow-sm);
 }
 
 nav a {
-    color: white;
-    font-weight: bold;
-    text-decoration: none; 
+    color: var(--text-muted);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 20px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
 }   
 
 nav a.active {
-    text-decoration: underline; 
+    color: var(--primary-purple);
+    border-bottom-color: var(--primary-purple);
 }
 
 nav a:hover:not(.active) {
-    color: #d1d5da
+    color: var(--text-main);
 }
 
 .page-container {
-    min-height: 100vh;
-    background: var(--bg-light);
-    padding: var(--container-padding);
-}
-
-.page-container1 {
+    min-height: calc(100vh - 60px);
+    padding: 32px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding: 20px;
-    margin: 0 auto;
 }
 
-/* Ensure the H1 doesn't have a massive default margin that messes up the gap */
-.page-container1 h1 {
+.page-container h1 {
     margin: 0;
+    font-size: 24px;
+    color: var(--text-main);
 }
 
 .card {
     background: var(--white);
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
     overflow: hidden;
 }
 
 .card-header {
-    background: var(--primary-purple);
-    color: var(--white);
-    padding: 15px 20px;
-    font-size: 18px;
-    font-weight: bold;
+    background: var(--white);
+    color: var(--text-main);
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-light);
+    border-left: 4px solid var(--primary-purple);
 }
 
 .card-body {
-    padding: 20px;
+    padding: 14px 20px 24px;
     display: flex;
     flex-direction: column;
-    gap: 15px
+    gap: 20px;
 }
 
-.card-body form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    gap: 10px;
-}
-
-.card-body form button {
-    width: auto;            
-    padding: 8px 16px;      
-    font-size: 14px;        
-    background-color: #64748b; 
-    color: white;
-    border: none;
-    border-radius: 4px;       
-    cursor: pointer;
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 14px;
     font-weight: 600;
-    transition: background-color 0.2s;
-    align-self: flex-start;   
-    margin-top: 5px;
-}
-
-.card-body form button:hover {
-    background-color: #475569;
-}
-
-.primary-btn {
-    width: 100%;
-    padding: 15px;
-    background: #7e22ce;
-    color: white;
     font-family: inherit;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
+    border-radius: 6px;
+    border: 1px solid transparent;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 10px
+    transition: all 0.2s ease;
+    width: 100%;
 }
 
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 
-.secondary-btn {
+.btn-primary {
+    background-color: var(--primary-purple);
+    color: var(--white);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-main);
+    color: var(--white);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: var(--secondary-hover);
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: var(--danger-main);
+    border-color: var(--danger-bg);
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: var(--danger-bg);
+    border-color: var(--danger-main);
+}
+
+.btn-auto {
+    width: auto;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     width: 100%;
-    padding: 15px;
-    background: #64747b;
-    color: white;
-    font-family: inherit;
-    border: none;
-    border-radius: 8px;
+}
+
+.input-group label {
     font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 10px
+    font-weight: 400;
+    color: var(--text-main);
+    margin: 0;
+}
+
+input:is([type="text"], [type="password"]), select {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text-main);
+    background-color: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+input:is([type="text"], [type="password"]):focus, select:focus {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 3px var(--border-focus);
+}
+
+input:is([type="text"], [type="password"]):hover:not(:focus), select:hover:not(:focus) {
+    border-color: var(--text-muted);
+}
+
+input:is([type="text"], [type="password"])::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
 }
 
 select {
     appearance: none;
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 16px;
-    font-family: inherit;
-    color: var(--text-main);
-    background-color: var(--white);
-    border: 1px solid #cbd5e1; /* A soft slate border */
-    border-radius: 6px;
     cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-    /* Custom arrow icon */
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
-    background-position: right 10px center;
+    background-position: right 14px center;
     background-size: 1em;
     padding-right: 40px;
 }
 
-select:focus {
-    border-color: var(--primary-purple);
-    box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.1);
-}
-
-select:hover {
-    border-color: #94a3b8;
-}
-
-/* 1. Base styles to reset the appearance */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
     background: transparent;
     cursor: pointer;
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
-/* 2. Styling the Track (the line) */
 input[type="range"]::-webkit-slider-runnable-track {
-    background: #e2e8f0;
-    height: 8px;
+    background: var(--border-light);
+    height: 6px;
     border-radius: 10px;
 }
 
-/* 3. Styling the Thumb (the circle) */
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Required for Chrome/Electron */
+    -webkit-appearance: none;
     appearance: none;
-    margin-top: -6px; /* Centers thumb on the 8px track */
+    margin-top: -7px; 
     background-color: var(--primary-purple);
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 3px solid var(--white);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     transition: transform 0.1s ease;
 }
 
-/* 4. Interactive states */
 input[type="range"]:active::-webkit-slider-thumb {
-    transform: scale(1.2);
+    transform: scale(1.15);
     background-color: var(--primary-hover);
 }
 
@@ -214,60 +241,11 @@ input[type="range"]:focus {
     outline: none;
 }
 
-label {
-    display: block;
-    margin-bottom: 6px;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px; /* Space between label and input */
-    margin-bottom: 20px; /* Space between different fields */
-}
-
-/* Optional: Subtle styling for labels inside groups */
-.input-group label {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-main);
-    margin-bottom: 3px;
-}
-
-input:is([type="text"], [type="password"]) {
-    width: 100%;
-    padding: 4px 14px;
-    font-size: 16px;
-    font-family: inherit;
-    color: var(--text-main);
-    background-color: var(--white);
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    outline: none;
-    box-sizing: border-box;
-}
-
-input:is([type="text"], [type="password"]):focus {
-    border-color: var(--primary-purple);
-    box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.1);
-}
-
-input:is([type="text"], [type="password"])::placeholder {
-    color: var(--text-muted);
-    opacity: 0.5;
-}
-
-input:is([type="text"], [type="password"]):hover:not(:focus) {
-    border-color: #94a3b8;
-}
-
-/* 1. Links inside Card Bodies */
 .card-body a {
     text-decoration: none;
     color: var(--primary-purple);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     transition: color 0.2s;
 }
 
@@ -276,61 +254,80 @@ input:is([type="text"], [type="password"]):hover:not(:focus) {
     text-decoration: underline;
 }
 
-/* 2. The Delete Button Class */
-/* Using a red 'danger' theme to distinguish from primary actions */
-.btn-delete {
-    background-color: transparent;
-    color: #ef4444; /* Standard red-500 */
-    border: 1px solid #fee2e2;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s;
+.card-body form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 20px; /* This creates a 20px "buffer" between every element in the form */
+    width: 100%;
 }
 
-.btn-delete:hover {
-    background-color: #fef2f2;
-    border-color: #ef4444;
-}
-
-.card-body ul {
+.data-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.card-body li, .snapshot-item {
+.data-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #f1f5f9;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-light);
 }
 
-.card-body li:last-child {
+.data-item:last-child {
     border-bottom: none;
+    padding-bottom: 0;
 }
 
-/* Metadata styling (ID labels, etc) */
 .text-id {
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: 600;
     color: var(--text-muted);
-    background: #f8fafc;
-    padding: 2px 6px;
+    background: var(--bg-light);
+    padding: 4px 8px;
     border-radius: 4px;
-    margin-left: 10px;
+    border: 1px solid var(--border-light);
 }
 
-/* 4. Snapshot specific card adjustments */
 .snapshot-meta {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
+/* Reduce the risk value size but keep it clear */
 .risk-value {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--text-main);
+    font-size: 24px; /* Down from 1.2rem/bold defaults */
+    font-weight: 400;
+    color: var(--primary-purple); /* Using color instead of just size to show importance */
+    letter-spacing: -0.02em;
+}
+
+/* Add a label style for "Risk Level" to give context */
+.risk-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+/* The wrapper for the profile layout */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Fixed left sidebar, flexible right content */
+    gap: 24px;
+    align-items: start;
+}
+
+/* For when the screen is too small (e.g. if you resize the Electron window) */
+@media (max-width: 800px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
 }

@@ -39,7 +39,7 @@ function PatientManager() {
 
     return (
         <>
-        <div className='page-container1'>
+        <div className='page-container'>
             <h1>Patient Manager</h1>
             <div className='card'>
                 <div className='card-header'>
@@ -52,7 +52,7 @@ function PatientManager() {
                                 <label>Name: </label>
                                 <input type="text" value={currentPatient} onChange={(e) => setCurrentPatient(e.target.value)} />
                             </div>
-                            <button type="submit">Add Patient</button>
+                            <button className='btn btn-primary btn-auto' type="submit">Add Patient</button>
                         </form>
                     </div>
                 </div>
@@ -61,15 +61,15 @@ function PatientManager() {
                 <div className='card-header'>
                     Patient Directory
                 </div>
-                <div className='card-body'>
+                <div className='card-body' style={{padding: "1px 20px 24px"}}>
                     {patients.length === 0 ? (
                         <p style={{ color : 'var(--text-muted)' }}>No patients found.</p>
                     ) : (
-                        <ul>
+                        <ul className='data-list'>
                             {patients.map(p => (
-                                <li key ={p.id}>
+                                <li key ={p.id} className='data-item'>
                                     <Link to={`/patients/${p.id}`}>{p.name}</Link>
-                                    <button className='btn-delete' onClick={() => handleDeletePatient(p.id)}>Delete Patient</button>
+                                    <button className='btn btn-danger btn-auto' onClick={() => handleDeletePatient(p.id)}>Delete Patient</button>
                                 </li>
                             ))}
                         </ul>

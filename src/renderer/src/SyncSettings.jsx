@@ -65,26 +65,30 @@ function SyncSettings() {
 
     return (
         <>
-        <div className="page-container1">
+        <div className="page-container">
             <div className="card">
                 <div className="card-header">Sync Patient Data</div>
                 <div className="card-body">
                     <form onSubmit={handleSync}>
-                        <div>
+                        <div className="input-group">
                             <label>Username</label>
                             <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
                         </div>
-                        <div>
+                        <div className="input-group">
                             <label>Password</label>
                             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         </div>
-                        <button type="submit" disabled={isSyncing}>{isSyncing? "Syincing..." : "Sync Data"}</button>
+                        <button type="submit" className="btn btn-primary" disabled={isSyncing}>{isSyncing? "Syincing..." : "Sync Data"}</button>
                     </form>
                 </div>
             </div>
-            <div>{unsyncedPatients.length === 0 && unsyncedSnapshots.length === 0 ? 
+            <div className="text-id" style={{
+                marginTop: '10px',
+                display: 'inline-block',
+            }}>
+                {unsyncedPatients.length === 0 && unsyncedSnapshots.length === 0 ? 
                 "All records synced" : 
-                `Pending records to sync: ${unsyncedPatients.length} patients and ${unsyncedSnapshots.length} snapshots`}</div>
+                `Pending records to sync: ${unsyncedPatients.length} patient${unsyncedPatients.length > 1 ? 's' : ''}  and ${unsyncedSnapshots.length} snapshot${unsyncedSnapshots.length > 1 ? 's': ''}`}</div>
         </div>
         </>
     )
