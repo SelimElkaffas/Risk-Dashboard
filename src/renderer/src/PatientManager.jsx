@@ -13,7 +13,11 @@ function PatientManager() {
             if (currentPatient.trim() === "" || currentPatient.trim().toLowerCase() === "guest") {
                 alert("Patient name cannot be empty or 'Guest'.")
             } else {
-                const id = await db.patients.add({ name: currentPatient.trim()})
+                const id = await db.patients.add({ 
+                    name: currentPatient.trim(),
+                    pbId: "",
+                    synced: false,
+                })
                 setCurrentPatient('');
             }
         } catch (error) {
@@ -22,9 +26,12 @@ function PatientManager() {
     }
 
     async function handleDeletePatient(id) {
+        if (!window.confirm("Are you sure you want to delete this patient? This action cannot be undone")) return
         try {
-            if (!window.confirm("Are you sure you want to delete this patient? This action cannot be undone")) return
-            await db.patients.delete(Number(id))
+            db.transaction('rw', db.patients, db.snapshots, async () => {
+                await db.snapshots.where('patientId').equals(Number(id)).delete()
+                await db.patients.delete(Number(id))
+            })
         } catch (error) {
             console.error("Error deleting patient", error)
         }
