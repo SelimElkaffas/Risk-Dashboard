@@ -12,7 +12,7 @@
   --radius: 10px;
   --shadow: 0 4px 6px var(--border-color);
   --gap: 20px;
-  --container-padding: 40px;
+  --container-padding: 20px;
 }
 
 body {
@@ -234,7 +234,7 @@ label {
     margin-bottom: 3px;
 }
 
-input[type="text"] {
+input:is([type="text"], [type="password"]) {
     width: 100%;
     padding: 4px 14px;
     font-size: 16px;
@@ -248,17 +248,17 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
-input[type="text"]:focus {
+input:is([type="text"], [type="password"]):focus {
     border-color: var(--primary-purple);
     box-shadow: 0 0 0 3px rgba(126, 34, 206, 0.1);
 }
 
-input[type="text"]::placeholder {
+input:is([type="text"], [type="password"])::placeholder {
     color: var(--text-muted);
     opacity: 0.5;
 }
 
-input[type="text"]:hover:not(:focus) {
+input:is([type="text"], [type="password"]):hover:not(:focus) {
     border-color: #94a3b8;
 }
 
