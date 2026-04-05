@@ -46,7 +46,7 @@ function Calculator() {
                     risk,
                     profile: patientProfile,
                     pbId: "",
-                    synced: false,
+                    synced: 0,
                 })
                 alert("Snapshot added successfully!")
             }

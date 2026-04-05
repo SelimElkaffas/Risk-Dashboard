@@ -16,7 +16,7 @@ function PatientManager() {
                 const id = await db.patients.add({ 
                     name: currentPatient.trim(),
                     pbId: "",
-                    synced: false,
+                    synced: 0,
                 })
                 setCurrentPatient('');
             }
@@ -26,7 +26,7 @@ function PatientManager() {
     }
 
     async function handleDeletePatient(id) {
-        if (!window.confirm("Are you sure you want to delete this patient? This action cannot be undone")) return
+        if (!window.confirm("Are you sure you want to delete this patient and their associated data? This action cannot be undone.")) return
         try {
             db.transaction('rw', db.patients, db.snapshots, async () => {
                 await db.snapshots.where('patientId').equals(Number(id)).delete()
@@ -69,7 +69,6 @@ function PatientManager() {
                             {patients.map(p => (
                                 <li key ={p.id}>
                                     <Link to={`/patients/${p.id}`}>{p.name}</Link>
-                                    <span className='text-id'>ID: {p.id}</span>
                                     <button className='btn-delete' onClick={() => handleDeletePatient(p.id)}>Delete Patient</button>
                                 </li>
                             ))}
