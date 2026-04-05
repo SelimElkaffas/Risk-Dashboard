@@ -45,6 +45,8 @@ function Calculator() {
                     timestamp: new Date().toISOString(),
                     risk,
                     profile: patientProfile,
+                    pbId: "",
+                    synced: false,
                 })
                 alert("Snapshot added successfully!")
             }
