@@ -11,9 +11,9 @@ This application provides medical professionals with a dashboard to calculate 10
 * Real-Time Algorithmic Engine: Translates inputs (vitals, labs, demographics, risk factors) into instantaneous risk calculations based on the 2025 AHA PREVENT formulas.
 * Dual-Storage Architecture: Allows clinical staff to toggle between two secure storage methods:
   * Local Device Storage (Offline-First): Uses IndexedDB/Dexie.js to save patient records directly to the specific computer's browser memory.
-  * Centralized Network Storage: Integrates with a self-hosted PocketBase database, allowing multiple exam rooms on the same local network to sync and access patient profiles securely.
-* Clinical UI/UX: Features a multi-panel interface with a dynamic, color-coded risk assessment progress bar for immediate visual feedback.
-* Frictionless Deployment: Packaged via Electron into a zero-dependency executable, requiring no IT setup or technical knowledge from clinic staff to install.
+  * Integrates with a self-hosted PocketBase database, allowing multiple exam rooms on the same local network to sync and access patient profiles securely.
+* Features a multi-panel interface with a dynamic, color-coded risk assessment progress bar for immediate visual feedback.
+* Packaged via Electron into a zero-dependency executable, requiring no IT setup or technical knowledge from clinic staff to install.
 
 ## Tech Stack
 
@@ -65,7 +65,14 @@ $ npm run build:mac
 $ npm run build:linux
 ```
 
-The compiled executable will be generated inside the `dist` or `out` folder.
+The compiled executable will be generated inside the `dist` or `out` directory.
+
+### Setting Up Pocketbase
+To set up pocketbase, run the command `./pocketbase --serve` in the `backend` directory. This will host the database by default on `localhost:8090`. You can change that in pocketbase itself, but remember to also modify the CRP in `src/renderer/index.html` accordingly.
+
+By default, the API rules are set up to allow any authenticated user to create, delete, and update records. See the Pocketbase [API documentation](https://pocketbase.io/docs/api-rules-and-filters/) if you'd like to change that. 
+
+
 
 ## Architecture & Privacy Note
 
